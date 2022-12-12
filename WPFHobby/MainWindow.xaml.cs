@@ -20,26 +20,25 @@ namespace WPFHobby
     /// </summary>
     public partial class MainWindow : Window
     {
-        public class Hobby
-        {
-            public string Title { get; set; }
-            public string Cate { get; set; }
-            public string Desc { get; set; }
-
-            public Hobby(string title, string cate, string desc)
-            {
-                Title = title;
-                Cate = cate;
-                Desc = desc;
-            }
-        }
-
-        protected List<Hobby> HobbyList = new List<Hobby>();
+        HobbyViewModel HobbyList = new HobbyViewModel();
 
         public MainWindow()
         {
             InitializeComponent();
-            Grid.ItemsSource = HobbyList;
+
+            Grid.ItemsSource = HobbyList.List;
+
+            HobbyList.Add(new Hobby("볼링", "주 1회", "운동"));
+            HobbyList.Add(new Hobby("피아노", "주 3회", "음악"));
+        }
+
+        private void OnAdd(object sender, RoutedEventArgs e)
+        {
+            HobbyWin g = new HobbyWin();
+            if (g.ShowDialog() != true)
+                return;
+
+            HobbyList.Add(new Hobby(g.HBTitle, g.HBTerm, g.HBSubject));
         }
     }
 }

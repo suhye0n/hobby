@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFHobby"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Border Padding="10">
-        <DataGrid
-            x:Name="Grid"/>
+        Title="취미 관리" Height="450" Width="800">
+    <Border Padding="10" Background="LightPink">
+        <DockPanel>
+            <Button
+                DockPanel.Dock="Bottom"
+                Content="취미 추가하기"
+                FontStyle="Italic"
+                Background="#FF72C672"
+                Click="OnAdd" BorderBrush="White"/>
+            <DataGrid
+                x:Name="Grid"
+                BorderBrush="HotPink"
+                DockPanel.Dock="Top"/>
+        </DockPanel>
     </Border>
 </Window>
