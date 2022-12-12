@@ -40,5 +40,14 @@ namespace WPFHobby
 
             HobbyList.Add(new Hobby(g.HBTitle, g.HBTerm, g.HBSubject));
         }
+
+        private void OnChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Hobby g = (Hobby)Grid.SelectedItem;
+
+            BitmapImage b = new BitmapImage(new Uri($"images/{g.Title}.png",
+                UriKind.RelativeOrAbsolute));
+            Image.Source = b;
+        }
     }
 }
